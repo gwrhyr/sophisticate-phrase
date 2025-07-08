@@ -16,10 +16,10 @@ The application will be a monolithic web application built with Rust.
 
 ```mermaid
 graph TD
-    A[User] --> B{Browser};
-    B --> C[Rust Web Server];
-    C --> D[Database (SQLite)];
-    C --> B;
+    A[User] --> B{Browser}
+    B --> C[Rust Web Server]
+    C --> D[Database (SQLite)]
+    C --> B
 ```
 
 ## 3. Data Model (ER Diagram)
