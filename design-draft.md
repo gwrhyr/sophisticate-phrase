@@ -18,7 +18,7 @@ The application will be a monolithic web application built with Rust.
 graph TD
     A[User] --> B{Browser}
     B --> C[Rust Web Server]
-    C --> D[Database (SQLite)]
+    C --> D[Database]
     C --> B
 ```
 
