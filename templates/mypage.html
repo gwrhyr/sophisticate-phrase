@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold text-light-text mb-6">Welcome, {{ username }}!</h1>
+    <h2 class="text-2xl font-semibold text-light-text mb-4">Your Phrase Lists</h2>
+    <ul class="space-y-2 mb-6">
+        {% for list in phrase_lists %}
+            <li class="bg-acrylic-light p-3 rounded-lg shadow-sm flex justify-between items-center">
+                <a href="/list/{{ list.id }}" class="text-dark-text hover:text-primary font-medium">{{ list.name }}</a>
+                <span class="text-sm text-dark-text">({{ list.target_lang }} / {{ list.source_lang }})</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="flex space-x-4">
+        <a href="/import" class="bg-oklch(50% 0.05 270) hover:bg-oklch(40% 0.05 270) text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">Import New Phrase List</a>
+        <form action="/logout" method="post">
+            <button type="submit" class="bg-oklch(70% 0.05 270) hover:bg-oklch(60% 0.05 270) text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">Logout</button>
+        </form>
+    </div>
+{% endblock %}

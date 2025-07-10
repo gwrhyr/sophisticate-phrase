@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT id, list_id, target_lang_text, source_lang_text\n            FROM phrases\n            WHERE list_id = $1\n            ORDER BY id ASC\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "list_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 2,
+        "name": "target_lang_text",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "source_lang_text",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "91cb9d1b1f11deb29c0e10a3e42748830f30682095c714c5d0315a2c424bded2"
+}

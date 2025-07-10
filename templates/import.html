@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Import Phrase List{% endblock %}
+
+{% block content %}
+    <div class="max-w-md mx-auto">
+        <h1 class="text-3xl font-bold text-center text-light-text mb-6">Import a New Phrase List</h1>
+        <form action="/import" method="post" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label for="name" class="text-light-text">List Name:</label>
+                <input type="text" id="name" name="name" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+
+            <div>
+                <label for="target_lang" class="text-light-text">Target Language (e.g., en):</label>
+                <input type="text" id="target_lang" name="target_lang" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+
+            <div>
+                <label for="source_lang" class="text-light-text">Source Language (e.g., ja):</label>
+                <input type="text" id="source_lang" name="source_lang" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+
+            <div>
+                <label for="file" class="text-light-text">CSV File:</label>
+                <input type="file" id="file" name="file" accept=".csv" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+
+            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">Import</button>
+        </form>
+        <p class="text-center text-light-text mt-6"><a href="/mypage" class="text-primary hover:underline">Back to My Page</a></p>
+    </div>
+{% endblock %}

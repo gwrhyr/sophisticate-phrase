@@ -1,0 +1,33 @@
+# Use a Rust base image for building
+FROM rust:latest as builder
+
+# Set the working directory
+WORKDIR /app
+
+# Copy Cargo.toml and Cargo.lock (if exists) to leverage Docker cache
+COPY Cargo.toml Cargo.lock ./
+COPY migrations ./migrations
+COPY templates ./templates
+COPY src ./src
+COPY .sqlx/ ./.sqlx/ # Copy the .sqlx directory for sqlx compile-time checks
+
+# Set SQLX_OFFLINE=true for compile-time query checking without live DB connection
+ENV SQLX_OFFLINE=true
+
+# Build the application
+RUN cargo build --release
+
+# Start a new stage for a smaller runtime image
+FROM debian:bookworm-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the compiled binary from the builder stage
+COPY --from=builder /app/target/release/sophisticate-phrase .
+
+# Expose the port the application listens on
+EXPOSE 3000
+
+# Run the application
+CMD ["./sophisticate-phrase"]

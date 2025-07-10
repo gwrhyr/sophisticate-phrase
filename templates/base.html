@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Sophisticate Phrase{% endblock %}</title>
+    <link href="/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative; /* To contain absolutely positioned children */
+            z-index: 0; /* Ensure content is above blurred background */
+            /* Subtle overlay over the blurred background, or a base color */
+            background-color: oklch(0% 0% 0% / 0.1); /* Very subtle dark overlay */
+        }
+        .blurred-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/Gemini_Generated_Image_uuchy3uuchy3uuch.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px); /* Apply blur to the image */
+            z-index: -1; /* Send to back */
+        }
+        .acrylic-card {
+            background-color: oklch(95% 0.02 270 / 0.6); /* Lighter, more opaque acrylic */
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px oklch(0% 0% 0% / 0.1);
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 90%;
+            animation: fadeIn 0.5s ease-out; /* Fade-in animation */
+            position: relative; /* Ensure it's above the blurred background */
+            z-index: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Header and Footer specific styles */
+        header,
+        footer {
+            background-color: oklch(95% 0.01 270 / 0.7); /* Slightly less white, more transparent */
+            backdrop-filter: blur(10px); /* Apply blur here */
+            position: relative; /* Ensure it's above the blurred background */
+            z-index: 1;
+        }
+        /* Basic form styling for consistency */
+        form {
+            @apply p-6 rounded-xl shadow-md;
+        }
+        label {
+            @apply block font-bold mb-2;
+            color: oklch(80% 0.05 270); /* Lighter text for labels */
+        }
+        input[type="text"], input[type="password"], input[type="file"] {
+            @apply w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2;
+            border-color: oklch(70% 0.02 270);
+            background-color: oklch(98% 0.01 270 / 0.8);
+            color: oklch(20% 0.05 270); /* Keep input text dark for readability */
+            --tw-ring-color: oklch(50% 0.05 270);
+        }
+        button {
+            @apply px-6 py-3 rounded-lg font-semibold transition-colors duration-200;
+        }
+        a {
+            @apply hover:underline transition-colors duration-200;
+            color: oklch(70% 0.05 270); /* Lighter links */
+        }
+    </style>
+    {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen flex flex-col">
+    <div class="blurred-background"></div> {# This is the new blurred background layer #}
+    <header class="w-full p-4 shadow-md flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-dark-text">Sophisticate Phrase</h1>
+        <nav>
+            <!-- Navigation links will go here, e.g., Home, My Page, Logout -->
+        </nav>
+    </header>
+    <main class="flex-grow p-4">
+        <div class="acrylic-card">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <footer class="w-full p-4 text-center shadow-inner mt-auto">
+        <p class="text-light-text">&copy; 2025 Sophisticate Phrase</p>
+    </footer>
+</body>
+</html>

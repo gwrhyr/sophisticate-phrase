@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="max-w-md mx-auto">
+        <h1 class="text-3xl font-bold text-center text-light-text mb-6">Login</h1>
+        <form action="/login" method="post" class="space-y-4">
+            <div>
+                <label for="username" class="text-light-text">Username:</label>
+                <input type="text" id="username" name="username" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+                <label for="password" class="text-light-text">Password:</label>
+                <input type="password" id="password" name="password" required class="w-full p-3 border border-secondary rounded-lg bg-acrylic-dark focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">Login</button>
+        </form>
+        <p class="text-center text-light-text mt-6">Don't have an account? <a href="/register" class="text-primary hover:underline">Register here</a>.</p>
+    </div>
+{% endblock %}
