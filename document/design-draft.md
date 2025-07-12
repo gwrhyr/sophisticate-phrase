@@ -129,7 +129,7 @@ Server->>Server: Parse CSV file
     Server->>Database: BEGIN TRANSACTION
     Server->>Database: INSERT INTO phrase_lists (...)
     Database-->>Server: list_id
-    loop For each phrase in YAML
+    loop For each phrase in CSV
         Server->>Database: INSERT INTO phrases (list_id, ...)
     end
     Server->>Database: COMMIT
